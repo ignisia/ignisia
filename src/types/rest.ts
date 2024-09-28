@@ -37,6 +37,7 @@ export interface GetRestQuery {
 
 export interface RestRouter {
   on: (...args: Random[]) => void;
+  route: (path: string, router: RestRouter) => void;
 }
 
 export interface CreateRestRouter {

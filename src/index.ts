@@ -1,1 +1,3 @@
-export { IgnisiaBroker, IgnisiaConfig, IgnisiaEventEmitter } from './internal';
+export * from './internal';
+export * from './utils/setup';
+export * from './utils/rest';

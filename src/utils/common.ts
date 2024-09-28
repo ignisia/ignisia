@@ -44,3 +44,15 @@ export async function resolvePromise<T>(
     return [null, err] as const;
   }
 }
+
+export function hasOwnProperty<
+  Z extends NonNullable<unknown>,
+  X extends NonNullable<unknown> = NonNullable<unknown>,
+  Y extends PropertyKey = PropertyKey,
+>(obj: X, property: Y): obj is X & Record<Y, Z> {
+  return Object.hasOwn(obj, property);
+}
+
+export function isOnCjs() {
+  return typeof module !== 'undefined' && typeof exports !== 'undefined';
+}

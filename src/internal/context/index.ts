@@ -12,7 +12,6 @@ import {
   validateParams,
   validateQuery,
 } from './helper';
-
 import { IgnisiaBroker, IgnisiaConfig } from '..';
 import type { IgnisiaBroker as Broker } from '../broker';
 import { isNil } from '../../utils/common';
