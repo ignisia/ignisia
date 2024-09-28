@@ -61,7 +61,7 @@ export class IgnisiaBroker {
     // @ts-expect-error
     params: U['params'],
     // @ts-expect-error
-    headers: U['headers']
+    header: U['header']
   ): Promise<V>;
   public async call<
     T extends IgnisiaActionCallName,
@@ -76,7 +76,7 @@ export class IgnisiaBroker {
     // @ts-expect-error
     params: U['params'],
     // @ts-expect-error
-    headers: U['headers'],
+    header: U['header'],
     // @ts-expect-error
     query: U['query']
   ): Promise<V>;
@@ -120,7 +120,7 @@ export class IgnisiaBroker {
     // @ts-expect-error
     params: U['params'],
     // @ts-expect-error
-    headers: U['headers']
+    header: U['header']
   ): boolean;
   public emit<T extends IgnisiaActionCallName>(
     eventName: T,

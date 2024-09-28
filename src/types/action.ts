@@ -97,3 +97,9 @@ export type AnyIgnisiaActionValidator = IgnisiaActionValidator<
 >;
 
 export type AnyIgnisiaActions = Record<string, AnyIgnisiaAction>;
+
+export interface CreateIgnisiaActionOption {
+  action: IgnisiaAction;
+  serviceName: string;
+  actionAlias: string;
+}

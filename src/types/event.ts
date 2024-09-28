@@ -14,3 +14,9 @@ export interface IgnisiaEvent<
 export type AnyIgnisiaEvent = IgnisiaEvent<Random, Random>;
 
 export type AnyIgnisiaEvents = Record<string, AnyIgnisiaEvent>;
+
+export interface CreateIgnisiaEventOption {
+  event: IgnisiaEvent;
+  serviceName: string;
+  eventAlias: string;
+}
