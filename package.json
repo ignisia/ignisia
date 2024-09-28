@@ -1,0 +1,92 @@
+{
+  "name": "ignisia",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "module": "dist/esm/index.js",
+  "type": "module",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "prebuild": "rimraf dist",
+    "build": "tsx build.ts",
+    "copy:cjs.json": "cp ./package.cjs.json ./dist/cjs/package.json",
+    "postcopy:cjs.json": "cp ./package.cjs.json ./dist/types/package.json",
+    "postbuild": "pnpm copy:cjs.json",
+    "prepublish": "pnpm build",
+    "lint": "eslint src/**/*.{ts,tsx} --fix",
+    "release": "commit-and-tag-version",
+    "release:beta": "commit-and-tag-version --prerelease",
+    "postrelease": "pnpm publish --access public && git push --follow-tags",
+    "postrelease:beta": "pnpm publish --tag next --access public && git push --follow-tags",
+    "check-types": "tsc --project tsconfig.json",
+    "prepare": "husky install"
+  },
+  
+  "devDependencies": {
+    "@asteasolutions/zod-to-openapi": "^7.1.1",
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.9.0",
+    "@trpc/server": "^10.45.2",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "commit-and-tag-version": "^12.2.0",
+    "esbuild": "^0.20.1",
+    "eslint": "^9.9.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "glob": "^10.3.10",
+    "globals": "^15.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.3.3",
+    "resolve-tspaths": "^0.8.18",
+    "rimraf": "^6.0.1",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "zod": ">=3.23.8"
+  },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignisia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ignisia/issues"
+  },
+  "author": "Muhammad Firdaus Sati (https://github.com/krsbx)",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "openapi",
+    "backend",
+    "event-driven",
+    "blaze",
+    "framework",
+    "scalable"
+  ],
+ "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
+  ]
+}
