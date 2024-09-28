@@ -1,4 +1,4 @@
-import type { IgnisiaContext } from '../../internal/IgnisiaContex';
+import type { IgnisiaContext } from '../../internal/context';
 import type { Random, RecordString, RecordUnknown } from '../common';
 
 export interface IgnisiaBeforeHookHandler<

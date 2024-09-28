@@ -1,4 +1,4 @@
-import type { RecordString, RecordUnknown } from '../types/common';
+import type { RecordString, RecordUnknown } from '../../types/common';
 
 export class IgnisiaContext<
   M extends RecordUnknown = RecordUnknown,

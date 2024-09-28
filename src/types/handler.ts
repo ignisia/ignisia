@@ -1,4 +1,4 @@
-import type { IgnisiaContext } from '../internal/IgnisiaContex';
+import type { IgnisiaContext } from '../internal/context';
 import type { Random, RecordString, RecordUnknown } from './common';
 
 export interface IgnisiaActionHandler<
@@ -17,4 +17,8 @@ export interface IgnisiaEventHandler<
   P extends RecordUnknown = RecordUnknown,
 > {
   (ctx: IgnisiaContext<M, Random, Random, Random, P>): Promise<void>;
+}
+
+export interface IgnisiaEventListener {
+  (...values: Random[]): Promise<void | unknown> | void | unknown;
 }
