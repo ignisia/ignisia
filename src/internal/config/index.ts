@@ -2,7 +2,7 @@ import type { Random } from '../../types/common';
 import type {
   GetRestBody,
   GetRestHeader,
-  GetRestParam,
+  GetRestParams,
   GetRestQuery,
 } from '../../types/rest';
 import { isNil } from '../../utils/common';
@@ -16,7 +16,7 @@ export class IgnisiaConfig {
   /**
    * Define a method to retrieve the REST params
    */
-  private $getRestParam: GetRestParam | null;
+  private $getRestParams: GetRestParams | null;
   /**
    * Define a method to retrieve the REST header
    */
@@ -28,7 +28,7 @@ export class IgnisiaConfig {
 
   constructor() {
     this.$getRestBody = null;
-    this.$getRestParam = null;
+    this.$getRestParams = null;
     this.$getRestHeader = null;
     this.$getRestQuery = null;
   }
@@ -72,21 +72,21 @@ export class IgnisiaConfig {
   /**
    * Define a method to retrieve the REST params
    */
-  public get getRestParam() {
-    if (isNil(this.$getRestParam)) {
+  public get getRestParams() {
+    if (isNil(this.$getRestParams)) {
       throw this.error('params');
     }
 
-    return this.$getRestParam;
+    return this.$getRestParams;
   }
 
   /**
    * Define a method to retrieve the REST params
    */
-  public set getRestParam(fn: GetRestParam) {
+  public set getRestParams(fn: GetRestParams) {
     this.validateGetter(fn);
 
-    this.$getRestParam = fn;
+    this.$getRestParams = fn;
   }
 
   /**

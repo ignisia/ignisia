@@ -3,6 +3,8 @@ import { IgnisiaBroker as Broker } from './broker';
 import { IgnisiaEventEmitter as EventEmitter } from './event-emitter';
 import { IgnisiaConfig as Config } from './config';
 
+export { IgnisiaContext } from './context';
+
 export const IgnisiaEventEmitter = new EventEmitter();
 
 export const IgnisiaBroker = new Broker();

@@ -33,7 +33,7 @@ export interface GetRestHeader {
   (...args: Random[]): RecordString;
 }
 
-export interface GetRestParam {
+export interface GetRestParams {
   (...args: Random[]): RecordUnknown;
 }
 
