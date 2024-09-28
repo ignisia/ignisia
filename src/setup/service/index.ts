@@ -1,14 +1,14 @@
 import path from 'node:path';
-import { IgnisiaConfig, type IgnisiaContext } from '../../../internal';
-import type { AnyIgnisiaAction } from '../../../types/action';
-import type { Middleware } from '../../../types/common';
-import type { RestRouter } from '../../../types/rest';
+import { IgnisiaConfig, type IgnisiaContext } from '../../internal';
+import type { AnyIgnisiaAction } from '../../types/action';
+import type { Middleware } from '../../types/common';
+import type { RestRouter } from '../../types/rest';
 import type {
   CreateIgnisiaService,
   CreateIgnisiaServiceOption,
   IgnisiaService as Service,
-} from '../../../types/service';
-import { getRestPath, getServiceName } from '../../common';
+} from '../../types/service';
+import { getRestPath, getServiceName } from '../../utils/common';
 import { IgnisiaServiceAction } from '../action';
 import { IgnisiaServiceEvent } from '../event';
 import { IgnisiaServiceRest } from '../rest';

@@ -1,13 +1,10 @@
-import { IgnisiaConfig, IgnisiaContext } from '../../../internal';
-import { IgnisiaError } from '../../../internal/error';
-import type { IgnisiaAction } from '../../../types/action';
-import type { Middleware, Random } from '../../../types/common';
-import type {
-  CreateIgnisiaRestOption,
-  IgnisiaMethod,
-} from '../../../types/rest';
-import type { IgnisiaService } from '../../../types/service';
-import { resolvePromise } from '../../common';
+import { IgnisiaConfig, IgnisiaContext } from '../../internal';
+import { IgnisiaError } from '../../internal/error';
+import type { IgnisiaAction } from '../../types/action';
+import type { Middleware, Random } from '../../types/common';
+import type { CreateIgnisiaRestOption, IgnisiaMethod } from '../../types/rest';
+import type { IgnisiaService } from '../../types/service';
+import { resolvePromise } from '../../utils/common';
 import { eventHandler } from '../handler';
 import {
   extractRestParams,

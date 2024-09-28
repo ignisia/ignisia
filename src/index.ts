@@ -1,3 +1,3 @@
 export * from './internal';
-export * from './utils/setup';
+export * from './setup';
 export * from './utils/rest';

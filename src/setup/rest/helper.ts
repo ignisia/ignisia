@@ -1,9 +1,9 @@
-import type { Random } from '../../../types/common';
+import type { Random } from '../../types/common';
 import type {
   IgnisiaMethod,
   IgnisiaRestParam,
   IgnisiaRestRoute,
-} from '../../../types/rest';
+} from '../../types/rest';
 
 export function extractRestPath(restRoute: IgnisiaRestRoute) {
   const restPath = restRoute.split(' ');

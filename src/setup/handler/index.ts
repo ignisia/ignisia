@@ -1,5 +1,5 @@
-import type { IgnisiaContext } from '../../../internal';
-import type { IgnisiaAction } from '../../../types/action';
+import type { IgnisiaContext } from '../../internal';
+import type { IgnisiaAction } from '../../types/action';
 import { afterActionHookHandler, beforeActionHookHandler } from './hooks';
 
 // Reuseable action handler for Call/Emit/REST

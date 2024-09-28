@@ -1,9 +1,6 @@
-import { IgnisiaContext, IgnisiaEventEmitter } from '../../internal';
-import type {
-  CreateIgnisiaActionOption,
-  IgnisiaAction,
-} from '../../types/action';
-import type { Random } from '../../types/common';
+import { IgnisiaContext, IgnisiaEventEmitter } from '../internal';
+import type { CreateIgnisiaActionOption, IgnisiaAction } from '../types/action';
+import type { Random } from '../types/common';
 import { eventHandler } from './handler';
 
 export class IgnisiaServiceAction {

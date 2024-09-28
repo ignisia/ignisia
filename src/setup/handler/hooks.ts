@@ -1,8 +1,8 @@
 import type {
   IgnisiaAfterHookHandlerOption,
   IgnisiaBeforeHookHandlerOption,
-} from '../../../types/hook';
-import { toArray } from '../../common';
+} from '../../types/hook';
+import { toArray } from '../../utils/common';
 
 export async function beforeActionHookHandler(
   options: IgnisiaBeforeHookHandlerOption

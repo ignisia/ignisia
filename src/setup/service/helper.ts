@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { Random } from '../../../types/common';
-import { IgnisiaError } from '../../../internal/error';
-import { hasOwnProperty, isOnCjs } from '../../common';
-import { IgnisiaService } from '../../../types/service';
+import { IgnisiaError } from '../../internal/error';
+import { Random } from '../../types/common';
+import { IgnisiaService } from '../../types/service';
+import { hasOwnProperty, isOnCjs } from '../../utils/common';
 
 export function loadFile<T = Random>(id: string): Promise<T> {
   if (isOnCjs()) {

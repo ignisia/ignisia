@@ -1,8 +1,8 @@
-import { IgnisiaContext, IgnisiaEventEmitter } from '../../internal';
-import type { IgnisiaEvent, CreateIgnisiaEventOption } from '../../types/event';
-import type { Random } from '../../types/common';
-import { RESERVED_KEYWORD } from '../broker';
-import type { IgnisiaContextValidation } from '../../internal/context/types';
+import { IgnisiaContext, IgnisiaEventEmitter } from '../internal';
+import type { IgnisiaContextValidation } from '../internal/context/types';
+import type { Random } from '../types/common';
+import type { CreateIgnisiaEventOption, IgnisiaEvent } from '../types/event';
+import { RESERVED_KEYWORD } from '../utils/broker';
 import { eventHandler } from './handler';
 
 export class IgnisiaServiceEvent {
