@@ -45,5 +45,5 @@ export interface IgnisiaBeforeHookHandlerOption<
   Q extends RecordUnknown = RecordUnknown,
 > {
   hooks: IgnisiaAcceptedBeforeHook<M, H, P, Q, B>;
-  blazeCtx: IgnisiaContext<M, H, P, Q, B>;
+  ctx: IgnisiaContext<M, H, P, Q, B>;
 }

@@ -51,5 +51,5 @@ export interface IgnisiaAfterHookHandlerOption<
 > {
   result: unknown;
   hooks: IgnisiaAcceptedAfterHook<R, M, H, P, Q, B>;
-  blazeCtx: IgnisiaContext<M, H, P, Q, B>;
+  ctx: IgnisiaContext<M, H, P, Q, B>;
 }
