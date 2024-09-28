@@ -1,16 +1,10 @@
-import { STATUS_CODE } from '../utils/rest';
-import type { Random, RecordString, RecordUnknown } from './common';
+import type { IgnisiaContext } from '../internal';
+import { REST_METHOD, STATUS_CODE } from '../utils/rest';
+import type { IgnisiaAction } from './action';
+import type { Middleware, Random, RecordString, RecordUnknown } from './common';
+import type { IgnisiaService } from './service';
 
-export enum IgnisiaMethod {
-  ALL = 'ALL',
-  POST = 'POST',
-  GET = 'GET',
-  PUT = 'PUT',
-  PATCH = 'PATCH',
-  OPTIONS = 'OPTIONS',
-  DELETE = 'DELETE',
-  USE = 'USE',
-}
+export type IgnisiaMethod = (typeof REST_METHOD)[keyof typeof REST_METHOD];
 
 export type IgnisiaRestRoute = `${IgnisiaMethod} /${string}` | `/${string}`;
 
@@ -39,4 +33,35 @@ export interface GetRestParams {
 
 export interface GetRestQuery {
   (...args: Random[]): RecordUnknown;
+}
+
+export interface RestRouter {
+  on: (...args: Random[]) => void;
+}
+
+export interface CreateRestRouter {
+  (): RestRouter;
+}
+
+export interface CreateIgnisiaRestOption {
+  service: IgnisiaService;
+  action: Omit<IgnisiaAction, 'name'>;
+  middlewares: Middleware[];
+  router: RestRouter;
+}
+
+export interface OnRestSuccessHandler {
+  (options: {
+    ctx: IgnisiaContext;
+    result: Random;
+    res: Random;
+  }): Promise<Random>;
+}
+
+export interface OnRestErrorHandler {
+  (options: {
+    ctx?: IgnisiaContext | null;
+    error: Random;
+    res: Random;
+  }): Promise<Random>;
 }

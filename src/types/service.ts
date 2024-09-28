@@ -11,7 +11,6 @@ export interface IgnisiaService<
 > {
   name?: N | null;
   rest?: string | null;
-  tags?: string | string[];
   version?: V | null;
   actions?: A | null;
   events?: E | null;

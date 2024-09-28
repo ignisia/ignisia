@@ -30,3 +30,17 @@ export function getServiceName(service: IgnisiaService) {
 
   return [version, service.name].filter(Boolean).join('.');
 }
+
+export async function resolvePromise<T>(
+  promise: Promise<T> | T
+): Promise<
+  readonly [result: T, error: null] | readonly [result: null, error: unknown]
+> {
+  try {
+    const res = await promise;
+
+    return [res, null] as const;
+  } catch (err) {
+    return [null, err] as const;
+  }
+}

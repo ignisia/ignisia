@@ -109,3 +109,14 @@ export const STATUS_CODE = {
   ...CLIENT_ERROR_STATUS_CODE,
   ...SERVER_ERROR_STATUS_CODE,
 } as const;
+
+export const REST_METHOD = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+  PATCH: 'PATCH',
+  OPTIONS: 'OPTIONS',
+  HEAD: 'HEAD',
+  ALL: 'ALL',
+} as const;

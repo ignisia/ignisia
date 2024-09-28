@@ -1,9 +1,12 @@
 import type { Random } from '../../types/common';
 import type {
+  CreateRestRouter,
   GetRestBody,
   GetRestHeader,
   GetRestParams,
   GetRestQuery,
+  OnRestErrorHandler,
+  OnRestSuccessHandler,
 } from '../../types/rest';
 import { isNil } from '../../utils/common';
 import { IgnisiaError } from '../error';
@@ -25,12 +28,27 @@ export class IgnisiaConfig {
    * Define a method to retrieve the REST queries
    */
   private $getRestQuery: GetRestQuery | null;
+  /**
+   * Define a method to create a REST router
+   */
+  private $getCreateRestRouter: CreateRestRouter | null;
+  /**
+   * Define on REST error handler
+   */
+  private $restErrorHandler: OnRestErrorHandler | null;
+  /**
+   * Define on REST success handler
+   */
+  private $restSuccessHandler: OnRestSuccessHandler | null;
 
   constructor() {
     this.$getRestBody = null;
     this.$getRestParams = null;
     this.$getRestHeader = null;
     this.$getRestQuery = null;
+    this.$getCreateRestRouter = null;
+    this.$restErrorHandler = null;
+    this.$restSuccessHandler = null;
   }
 
   private error(type: string) {
@@ -127,5 +145,65 @@ export class IgnisiaConfig {
     this.validateGetter(fn);
 
     this.$getRestQuery = fn;
+  }
+
+  /**
+   * Define a method to create a REST router
+   */
+  public get createRestRouter() {
+    if (isNil(this.$getCreateRestRouter)) {
+      throw new IgnisiaError('Define a method to create a REST router first!');
+    }
+
+    return this.$getCreateRestRouter;
+  }
+
+  /**
+   * Define a method to create a REST router
+   */
+  public set createRestRouter(fn: CreateRestRouter) {
+    this.validateGetter(fn);
+
+    this.$getCreateRestRouter = fn;
+  }
+
+  /**
+   * Define on REST error handler
+   */
+  public get restErrorHandler() {
+    if (isNil(this.$restErrorHandler)) {
+      throw new IgnisiaError('Define on REST error handler first!');
+    }
+
+    return this.$restErrorHandler;
+  }
+
+  /**
+   * Define on REST error handler
+   */
+  public set restErrorHandler(fn: OnRestErrorHandler) {
+    this.validateGetter(fn);
+
+    this.$restErrorHandler = fn;
+  }
+
+  /**
+   * Define on REST success handler
+   */
+  public get restSuccessHandler() {
+    if (isNil(this.$restSuccessHandler)) {
+      throw new IgnisiaError('Define on REST success handler first!');
+    }
+
+    return this.$restSuccessHandler;
+  }
+
+  /**
+   * Define on REST success handler
+   */
+  public set restSuccessHandler(fn: OnRestSuccessHandler) {
+    this.validateGetter(fn);
+
+    this.$restSuccessHandler = fn;
   }
 }
