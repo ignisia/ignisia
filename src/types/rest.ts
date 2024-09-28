@@ -1,5 +1,5 @@
 import type { IgnisiaContext } from '../internal';
-import { REST_METHOD, STATUS_CODE } from '../utils/rest';
+import { RESPONSE_TYPE, REST_METHOD, STATUS_CODE } from '../utils/rest';
 import type { IgnisiaAction } from './action';
 import type { Middleware, Random, RecordString, RecordUnknown } from './common';
 import type { IgnisiaService } from './service';
@@ -19,6 +19,8 @@ export type StatusCode =
   | (typeof STATUS_CODE)[keyof typeof STATUS_CODE]
   | (number & NonNullable<unknown>);
 
+export type ResponseType = (typeof RESPONSE_TYPE)[keyof typeof RESPONSE_TYPE];
+
 export interface GetRestBody {
   (...args: Random[]): Promise<Random>;
 }
@@ -37,6 +39,7 @@ export interface GetRestQuery {
 
 export interface RestRouter {
   on: (...args: Random[]) => void;
+  use: (path: string, router: RestRouter) => void;
   route: (path: string, router: RestRouter) => void;
 }
 
@@ -51,18 +54,14 @@ export interface CreateIgnisiaRestOption {
   router: RestRouter;
 }
 
-export interface OnRestSuccessHandler {
-  (options: {
-    ctx: IgnisiaContext;
-    result: Random;
-    res: Random;
-  }): Promise<Random>;
+export interface OnRestSuccessHandler<T = Random> {
+  (options: { ctx: IgnisiaContext; result: Random; res: T }): Promise<Random>;
 }
 
-export interface OnRestErrorHandler {
+export interface OnRestErrorHandler<T = Random> {
   (options: {
     ctx?: IgnisiaContext | null;
     error: Random;
-    res: Random;
+    res: T;
   }): Promise<Random>;
 }

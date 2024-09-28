@@ -84,6 +84,13 @@ export const STATUS_CODE = {
   ...SERVER_ERROR_STATUS_CODE,
 } as const;
 
+export const RESPONSE_TYPE = {
+  BODY: 'body',
+  TEXT: 'text',
+  JSON: 'json',
+  BUFFER: 'buffer',
+} as const;
+
 export const REST_METHOD = {
   GET: 'GET',
   POST: 'POST',

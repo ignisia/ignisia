@@ -26,7 +26,7 @@ export function getRestReqObject(...args: Random[]) {
 }
 
 export function getRestResObject(...args: Random[]) {
-  if (args.length === 1) {
+  if (args.length === 1 || typeof args[1] === 'function') {
     return args[0];
   }
 

@@ -37,7 +37,12 @@ export class IgnisiaServiceRest {
       ...(this.action.middlewares ?? []),
     ];
 
-    options.router.on(...middlewares, this.restHandler.bind(this));
+    options.router.on(
+      method,
+      path,
+      ...middlewares,
+      this.restHandler.bind(this)
+    );
   }
 
   public async restHandler(...args: Random[]) {

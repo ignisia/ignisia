@@ -110,7 +110,7 @@ export class IgnisiaService {
   private assignRestRoute() {
     if (!this.router) return;
 
-    this.mainRouter.route(`/${this.restPath}`, this.router);
+    this.mainRouter[IgnisiaConfig.routeBy](`/${this.restPath}`, this.router);
   }
 
   public onStarted() {

@@ -7,6 +7,7 @@ import type {
   GetRestQuery,
   OnRestErrorHandler,
   OnRestSuccessHandler,
+  RestRouter,
 } from '../../types/rest';
 import { isNil } from '../../utils/common';
 import { IgnisiaError } from '../error';
@@ -41,6 +42,11 @@ export class IgnisiaConfig {
    */
   private $restSuccessHandler: OnRestSuccessHandler | null;
 
+  /**
+   * Define which method to call on assigning a routes
+   */
+  private $routeBy: keyof RestRouter;
+
   constructor() {
     this.$getRestBody = null;
     this.$getRestParams = null;
@@ -49,6 +55,7 @@ export class IgnisiaConfig {
     this.$getCreateRestRouter = null;
     this.$restErrorHandler = null;
     this.$restSuccessHandler = null;
+    this.$routeBy = 'route';
   }
 
   private error(type: string) {
@@ -57,10 +64,15 @@ export class IgnisiaConfig {
     );
   }
 
-  private validateGetter(fn: (...args: Random[]) => Random) {
+  private validateGetter(
+    fn: (...args: Random[]) => Random,
+    checkLength = true
+  ) {
     if (isNil(fn) || typeof fn !== 'function') {
       throw new IgnisiaError('The method should be a function');
     }
+
+    if (!checkLength) return;
 
     if (fn.length < 1) {
       throw new IgnisiaError('The method should take an argument');
@@ -162,7 +174,7 @@ export class IgnisiaConfig {
    * Define a method to create a REST router
    */
   public set createRestRouter(fn: CreateRestRouter) {
-    this.validateGetter(fn);
+    this.validateGetter(fn, false);
 
     this.$getCreateRestRouter = fn;
   }
@@ -205,5 +217,19 @@ export class IgnisiaConfig {
     this.validateGetter(fn);
 
     this.$restSuccessHandler = fn;
+  }
+
+  /**
+   * Define which method to call on assigning a routes
+   */
+  public get routeBy() {
+    return this.$routeBy;
+  }
+
+  /**
+   * Define which method to call on assigning a routes
+   */
+  public set routeBy(routeBy: keyof RestRouter) {
+    this.$routeBy = routeBy;
   }
 }

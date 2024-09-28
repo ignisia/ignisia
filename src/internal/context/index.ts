@@ -1,21 +1,21 @@
 /* eslint-disable import/no-cycle */
 import type { ZodSchema } from 'zod';
+import { IgnisiaBroker, IgnisiaConfig } from '..';
 import type { Random, RecordString, RecordUnknown } from '../../types/common';
-import type {
-  CreateIgnisiaContextOption,
-  IgnisiaContextConstructorOption,
-  IgnisiaContextData,
-} from './types';
+import type { ResponseType, StatusCode } from '../../types/rest';
+import { isNil } from '../../utils/common';
+import type { IgnisiaBroker as Broker } from '../broker';
 import {
   validateBody,
   validateHeader,
   validateParams,
   validateQuery,
 } from './helper';
-import { IgnisiaBroker, IgnisiaConfig } from '..';
-import type { IgnisiaBroker as Broker } from '../broker';
-import { isNil } from '../../utils/common';
-import { StatusCode } from '../../types/rest';
+import type {
+  CreateIgnisiaContextOption,
+  IgnisiaContextConstructorOption,
+  IgnisiaContextData,
+} from './types';
 
 export class IgnisiaContext<
   M extends RecordUnknown = RecordUnknown,
@@ -30,6 +30,7 @@ export class IgnisiaContext<
   private $params: P | null;
   private $reqHeader: H | null;
 
+  public response: ResponseType | null;
   public status: StatusCode | null;
   private $resHeader: Record<string, string | string[]> | null;
   private $rest: Random | null;
@@ -42,6 +43,7 @@ export class IgnisiaContext<
   public readonly event: Broker['event'];
 
   constructor(options: IgnisiaContextConstructorOption<M, H, P, Q, B>) {
+    this.response = null;
     this.status = null;
     this.isRest = !isNil(options.rest);
     this.$resHeader = null;
